@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM buildpack-deps:jessie-scm
 
 ENV AGENT_DIR  /opt/buildAgent
 
@@ -110,5 +110,8 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 VOLUME /var/lib/docker
 VOLUME /opt/buildAgent
 
+# Install the .net core deps
+
+# Install the .net core sdk
 
 EXPOSE 9090
