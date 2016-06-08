@@ -4,7 +4,7 @@ ENV AGENT_DIR  /opt/buildAgent
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		lxc iptables aufs-tools ca-certificates curl wget software-properties-common language-pack-en \
+		lxc iptables aufs-tools ca-certificates curl wget software-properties-common language-pack-en apt-transport-https\
 	&& rm -rf /var/lib/apt/lists/*
 
 # Fix locale.
@@ -109,9 +109,6 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 VOLUME /var/lib/docker
 VOLUME /opt/buildAgent
-
-# Install apt-get https transport module
-RUN apt-get install apt-transport-https
 
 # Install the .net core sdk
 RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
