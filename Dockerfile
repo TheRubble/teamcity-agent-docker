@@ -1,4 +1,4 @@
-FROM buildpack-deps:jessie-scm
+FROM ubuntu:14.04
 
 ENV AGENT_DIR  /opt/buildAgent
 
