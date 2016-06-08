@@ -110,8 +110,11 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 VOLUME /var/lib/docker
 VOLUME /opt/buildAgent
 
-# Install the .net core deps
-
 # Install the .net core sdk
+
+RUN sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+RUN apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+RUN apt-get update
+RUN apt-get install dotnet-dev-1.0.0-preview1-002702
 
 EXPOSE 9090
